@@ -5,7 +5,7 @@ metadata:
   labels:
     app: reverseproxy
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: reverseproxy
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: reverseproxy
-        image: hoangthiendocker1996/reverseproxy
+        image: hoangthiendocker1996/reverseproxy:reverseproxy
         ports:
         - containerPort: 80

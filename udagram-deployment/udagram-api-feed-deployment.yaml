@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: udagram-api-feed
-        image: hoangthiendocker1996/udagram-api-feed
+        image: hoangthiendocker1996/udagram-api-feed:udagram-api-feed
         ports:
         - containerPort: 80
