@@ -1,13 +1,13 @@
-language: node_js
-node_js:
-  - 18
+arch:
+  - arm64
 
 services:
   - docker
-
+env:
+  - hoangthiendocker1996/udagram-frontend
 # Pre-testing installs
 install:
-  - echo "nothing needs to be installed"
+  - docker image build -t ${IMAGE} .
 
 # Scripts to be run such as tests
 before_script:
