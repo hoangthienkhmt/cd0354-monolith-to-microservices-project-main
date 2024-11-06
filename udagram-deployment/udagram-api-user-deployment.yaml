@@ -16,6 +16,19 @@ spec:
     spec:
       containers:
       - name: backend-user
-        image: hoangthiendocker1996/udagram-api-user
+        image: hoangthiendocker1996/udagram-api-user:latest
         ports:
-        - containerPort: 80
+          - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: env-config
+          - secretRef:
+              name: env-secret
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
+            items:
+            - key: credentials
+              path: ~/.aws/credentials
+        

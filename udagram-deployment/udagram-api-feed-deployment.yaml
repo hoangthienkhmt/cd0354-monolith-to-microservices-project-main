@@ -16,13 +16,18 @@ spec:
     spec:
       containers:
       - name: backend-feed
-        image: hoangthiendocker1996/udagram-api-feed:udagram-api-feed
-        resources:
-          requests:
-            memory: "1000Gi"
-          limits:
-            memory: "1000Gi"
-        command: ["stress"]
-        args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+        image: hoangthiendocker1996/udagram-api-feed:latest
         ports:
-        - containerPort: 81
+        - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: env-config
+          - secretRef:
+              name: env-secret
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
+            items:
+            - key: credentials
+              path: ~/.aws/credentials
